@@ -1,6 +1,6 @@
 #!/bin/bash
 
-systemctl stop pve-cluster corosync
+systemctl stop pve-cluster.service corosync.service
 pmxcfs -l
 rm /etc/corosync/*
 rm /etc/pve/corosync.conf
