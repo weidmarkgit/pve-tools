@@ -19,7 +19,7 @@ fi
 if test -f "$PVE_ENTERPRISE"; then
     echo "$PVE_ENTERPRISE exists and and will be removed"
     rm -rfv $PVE_ENTERPRISE
-    $IS_PVE=true
+    IS_PVE=true
 else
     echo "#PVE_ENTERPRISE does not exist"
 fi
@@ -28,7 +28,7 @@ fi
 if test -f "$PBS_ENTERPRISE"; then
     echo "$PBS_ENTERPRISE exists and and will be removed"
     rm -rfv $PBS_ENTERPRISE
-    $IS_PBS=true
+    IS_PBS=true
 else
     echo "$PBS_ENTERPRISE does not exist"
 fi
@@ -52,7 +52,7 @@ fi
 
 finish() {
   result=$?
-    echo "proxmox-enterprise-config.sh completed succesfully\n Please reboot your system to complete configuration"
+    printf "proxmox-enterprise-config.sh completed succesfully\n Please reboot your system to complete configuration"
   exit ${result}
 }
 trap finish EXIT ERR
