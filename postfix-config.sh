@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Install the authentication library
-apt install libsasl2-modules
+apt install libsasl2-modules -y
 
 #Configure our API key for login
 echo "[smtp.sendgrid.net]:587 apikey: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" > /etc/postfix/sasl_passwd
@@ -23,7 +23,7 @@ postfix reload
 
 #Install library if using proxmox backup server
 if [ -x "$(command -v proxmox-backup-client)" ] ; then
-    apt install bsd-mailx
+    apt install bsd-mailx -y
 fi 
 
 echo "test message" | mail -s "test subject" support@weidmarkit.com
