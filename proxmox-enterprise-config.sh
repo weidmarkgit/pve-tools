@@ -13,7 +13,7 @@ function detect-version() {
 
     #Check for Proxmox VE enterprise repository file
 
-    if "pveversion"; then 
+    if ! [ -x "$(command -v pveversion)" ]; then 
         IS_PVE=true
         if test -f "${pve_enterprise}"; then
             rm --recursive --force --verbose ${pve_enterprise}
@@ -23,7 +23,7 @@ function detect-version() {
         fi 
     fi 
     
-    if "proxmox-backup-client version" ; then
+    if ! [ -x "$(command -v proxmox-backup-client)" ] ; then
         #Check for Proxmox Backup enterprise repository file
         if test -f "${pbs_enterprise}"; then
             rm --recursive --force --verbose ${pbs_enterprise}
