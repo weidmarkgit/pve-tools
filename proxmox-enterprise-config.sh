@@ -50,4 +50,9 @@ if $IS_PVE; then
     pveam update
 fi
 
-reboot
+finish() {
+  result=$?
+    echo "proxmox-enterprise-config.sh completed succesfully\n Please reboot your system to complete configuration"
+  exit ${result}
+}
+trap finish EXIT ERR
