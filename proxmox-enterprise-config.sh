@@ -4,6 +4,9 @@ SOURCES=/etc/apt/sources.list
 PVE_ENTERPRISE=/etc/apt/sources.list.d/pve-enterprise.list
 PBS_ENTERPRISE=/etc/apt/sources.list.d/pbs-enterprise.list
 
+IS_PBS=false
+IS_PVE=false
+
 
 #Check for APT sources file
 if test -f "$SOURCES"; then
@@ -16,6 +19,7 @@ fi
 if test -f "$PVE_ENTERPRISE"; then
     echo "$PVE_ENTERPRISE exists and and will be removed"
     rm -rfv $PVE_ENTERPRISE
+    $IS_PVE=true
 else
     echo "#PVE_ENTERPRISE does not exist"
 fi
@@ -24,6 +28,7 @@ fi
 if test -f "$PBS_ENTERPRISE"; then
     echo "$PBS_ENTERPRISE exists and and will be removed"
     rm -rfv $PBS_ENTERPRISE
+    $IS_PBS=true
 else
     echo "$PBS_ENTERPRISE does not exist"
 fi
@@ -38,9 +43,7 @@ deb http://ftp.debian.org/debian bullseye-updates main contrib\n
 deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription\n
 
 # security updates\n
-deb http://security.debian.org/debian-security bullseye-security main contrib\n" 
-
->> /etc/apt/sources.list 
+deb http://security.debian.org/debian-security bullseye-security main contrib\n" > /etc/apt/sources.list 
 
 #Adding fake enterprise repository
 wget https://github.com/Jamesits/pve-fake-subscription/releases/download/v0.0.7/pve-fake-subscription_0.0.7_all.deb
@@ -51,5 +54,9 @@ rm pve-fake-subscription_0.0.7_all.deb
 #Final touches
 apt update
 apt upgrade
-pveam update  
+
+if $IS_PVE; then 
+    pveam update
+fi
+
 reboot
