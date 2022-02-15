@@ -70,7 +70,7 @@ function configure-placeholder-subscription() {
 # Function calls
 detect-version
 configure-sources
-configure-placeholder_subscription_url
+configure-placeholder_subscription
 
 apt update
 apt upgrade -y
