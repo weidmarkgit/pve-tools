@@ -26,5 +26,6 @@ if [ -x "$(command -v proxmox-backup-client)" ] ; then
     apt install bsd-mailx -y
 fi 
 
+#You have mail
 echo "test message" | mail -s "test subject" support@weidmarkit.com
 echo "Test message sent to support@weidmarkit.com"
