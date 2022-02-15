@@ -34,7 +34,7 @@ else
 fi
 
 #Create new APT source list
-cp ./sources.list /etc/apt/
+cp /root/pve-tools/sources.list /etc/apt/
 
 #Adding fake enterprise repository
 wget https://github.com/Jamesits/pve-fake-subscription/releases/download/v0.0.7/pve-fake-subscription_0.0.7_all.deb
