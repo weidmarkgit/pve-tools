@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#STILL IN TESTING
 systemctl stop pve-cluster.service corosync.service
 pmxcfs -l
 rm -r /etc/corosync/*
