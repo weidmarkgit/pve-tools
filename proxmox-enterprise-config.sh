@@ -52,7 +52,7 @@ fi
 
 finish() {
   result=$?
-    printf "proxmox-enterprise-config.sh completed succesfully\n Please reboot your system to complete configuration"
+    printf "proxmox-enterprise-config.sh completed succesfully\n Please reboot your system to complete configuration\n"
   exit ${result}
 }
 trap finish EXIT ERR
