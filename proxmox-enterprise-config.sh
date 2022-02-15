@@ -12,21 +12,26 @@ function detect-version() {
     local -r  pbs_enterprise=/etc/apt/sources.list.d/pbs-enterprise.list
 
     #Check for Proxmox VE enterprise repository file
-    if test -f "${pve_enterprise}"; then
-        rm --recursive --force --verbose ${pve_enterprise}
+
+    if "pveversion"; then 
         IS_PVE=true
-    else
-        echo "${pve_enterprise} does not exist"
-    fi
-
-    #Check for Proxmox Backup enterprise repository file
-    if test -f "${pbs_enterprise}"; then
-        rm --recursive --force --verbose ${pbs_enterprise}
-        IS_PBS=true
-    else
-        echo "${pbs_enterprise} does not exist"
-    fi
-
+        if test -f "${pve_enterprise}"; then
+            rm --recursive --force --verbose ${pve_enterprise}
+            IS_PVE=true
+        else
+            echo "${pve_enterprise} does not exist"
+        fi 
+    fi 
+    
+    if "proxmox-backup-client version" ; then
+        #Check for Proxmox Backup enterprise repository file
+        if test -f "${pbs_enterprise}"; then
+            rm --recursive --force --verbose ${pbs_enterprise}
+            IS_PBS=true
+        else
+            echo "${pbs_enterprise} does not exist"
+        fi
+    fi 
 }
 
 function configure-sources() {
