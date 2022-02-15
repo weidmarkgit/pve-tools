@@ -34,16 +34,7 @@ else
 fi
 
 #Create new APT source list
-echo -e 
-"deb http://ftp.debian.org/debian bullseye main contrib\n
-deb http://ftp.debian.org/debian bullseye-updates main contrib\n
-
-# PBS pbs-no-subscription repository provided by proxmox.com,\n
-# NOT recommended for production use\n
-deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription\n
-
-# security updates\n
-deb http://security.debian.org/debian-security bullseye-security main contrib\n" > /etc/apt/sources.list 
+cp sources.list /etc/apt/
 
 #Adding fake enterprise repository
 wget https://github.com/Jamesits/pve-fake-subscription/releases/download/v0.0.7/pve-fake-subscription_0.0.7_all.deb
