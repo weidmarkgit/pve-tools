@@ -1,0 +1,10 @@
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous
+smtp_tls_security_level = encrypt
+header_size_limit = 4096000
+relayhost = [smtp.sendgrid.net]:587
+sender_canonical_classes = envelope_sender, header_sender
+sender_canonical_maps =  regexp:/etc/postfix/sender_canonical_maps
+smtp_header_checks = regexp:/etc/postfix/header_check
