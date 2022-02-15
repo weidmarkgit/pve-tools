@@ -44,7 +44,7 @@ rm pve-fake-subscription_0.0.7_all.deb
 
 #Final touches
 apt update
-apt upgrade
+apt upgrade -y
 
 if $IS_PVE; then 
     pveam update
