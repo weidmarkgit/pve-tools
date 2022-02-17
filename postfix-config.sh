@@ -4,14 +4,14 @@
 apt install libsasl2-modules -y
 
 #Configure our API key for login
-echo "[smtp.sendgrid.net]:587 apikey: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" > /etc/postfix/sasl_passwd
+echo "INSERT SENDGRID KEY HERE AND DO NOT PUSH IT TO ORIGIN . . . EVER" > /etc/postfix/sasl_passwd
 
 #Stored hashed API key into database
 postmap hash:/etc/postfix/sasl_passwd
 chmod 600 /etc/postfix/sasl_passwd
 
 #Backup and overwrite main.cf configuration file
-cp /etc/postfix/main.cf /etc/postfix/main.cf.backup 
+cp /etc/postfix/main.cf /etc/postfix/main.cf.backup
 cp --force /root/pve-tools/postfix-files/main.cf /etc/postfix/
 
 #Overwrite sender ID
@@ -24,7 +24,7 @@ postfix reload
 #Install library if using proxmox backup server
 if [ -x "$(command -v proxmox-backup-client)" ] ; then
     apt install bsd-mailx -y
-fi 
+fi
 
 #You have mail
 echo "test message" | mail -s "test subject" support@weidmarkit.com
