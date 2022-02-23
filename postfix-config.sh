@@ -11,7 +11,7 @@ function initial-configuration(){
 
   #Create password file
   echo "[box.weidmark.support]:465 ${CLIENT_EMAIL}:${client_password}" > /etc/postfix/sasl_passwd
-
+  echo "${CLIENT_EMAIL}" > /etc/mailname 
   #Stored hashed API key into database
   postmap hash:/etc/postfix/sasl_passwd
   chmod 600 /etc/postfix/sasl_passwd
