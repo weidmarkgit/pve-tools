@@ -21,7 +21,7 @@ function initial-configuration(){
   cp --force /root/pve-tools/postfix-files/main.cf /etc/postfix/
 }
 
-function id-configuration
+function id-configuration() {
   sed -i '/postmaster: root/c\postmaster: ${CLIENT_EMAIL}' /etc/aliases
   #Overwrite sender ID
   echo "/.+/    ${CLIENT_EMAIL}" > /etc/postfix/sender_canonical_maps
