@@ -11,7 +11,7 @@ function initial-configuration(){
 
   #Create password file
   echo "[box.weidmark.support]:465 ${CLIENT_EMAIL}:${client_password}" > /etc/postfix/sasl_passwd
-  echo "${CLIENT_EMAIL}" > /etc/mailname 
+  echo "${CLIENT_EMAIL}" > /etc/mailname
   #Stored hashed API key into database
   postmap hash:/etc/postfix/sasl_passwd
   chmod 600 /etc/postfix/sasl_passwd
@@ -22,7 +22,7 @@ function initial-configuration(){
 }
 
 function id-configuration() {
-  sed -i '/postmaster: root/c\postmaster: ${CLIENT_EMAIL}' /etc/aliases
+  sed -i "/postmaster: root/c\postmaster: ${CLIENT_EMAIL}" /etc/aliases
   #Overwrite sender ID
   echo "/.+/    ${CLIENT_EMAIL}" > /etc/postfix/sender_canonical_maps
   #Overwrite header ID
