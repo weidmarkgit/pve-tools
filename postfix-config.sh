@@ -2,7 +2,7 @@
 CLIENT_EMAIL=""
 
 function initial-configuration(){
-  local -r client_password
+  local client_password=""
   read -r -p "Please enter client email: " CLIENT_EMAIL
   read -r -s -p "Please enter client password: " client_password
 
