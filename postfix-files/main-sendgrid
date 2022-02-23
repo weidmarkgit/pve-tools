@@ -1,6 +1,6 @@
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
-myhostname = weidmark.support
+myhostname=pbs.home
 
 smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)
 biff = no
@@ -11,26 +11,22 @@ append_dot_mydomain = no
 # Uncomment the next line to generate "delayed mail" warnings
 #delay_warning_time = 4h
 
-readme_directory = no
-
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-myorigin = /etc/mailname
-mydestination =
+mydestination = $myhostname, localhost.$mydomain, localhost
 mynetworks = 127.0.0.0/8
 inet_interfaces = loopback-only
 recipient_delimiter = +
 
 compatibility_level = 2
 
-smtp_tls_wrappermode = yes
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = noanonymous
 smtp_sasl_tls_security_options = noanonymous
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
-relayhost = [box.weidmark.support]:465
+relayhost = [smtp.sendgrid.net]:587
 sender_canonical_classes = envelope_sender, header_sender
 sender_canonical_maps =  regexp:/etc/postfix/sender_canonical_maps
 smtp_header_checks = regexp:/etc/postfix/header_check
