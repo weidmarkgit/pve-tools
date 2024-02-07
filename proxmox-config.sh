@@ -60,16 +60,16 @@ function configure-sources() {
 
 }
 
-function configure-placeholder-subscription() {
+#function configure-placeholder-subscription() {
 
-    local -r placeholder_subscription_url=https://github.com/Jamesits/pve-fake-subscription/releases/download/v0.0.7/pve-fake-subscription_0.0.7_all.deb
+    #local -r placeholder_subscription_url=https://github.com/Jamesits/pve-fake-subscription/releases/download/v0.0.7/pve-fake-subscription_0.0.7_all.deb
     
-    wget ${placeholder_subscription_url}
-    dpkg -i pve-fake-subscription_0.0.7_all.deb
-    echo "127.0.0.1 shop.maurer-it.com" | tee -a /etc/hosts
-    rm pve-fake-subscription_0.0.7_all.deb
+    #wget ${placeholder_subscription_url}
+    #dpkg -i pve-fake-subscription_0.0.7_all.deb
+    #echo "127.0.0.1 shop.maurer-it.com" | tee -a /etc/hosts
+    #rm pve-fake-subscription_0.0.7_all.deb
 
-}
+#}
 
 # Function calls
 detect-version
